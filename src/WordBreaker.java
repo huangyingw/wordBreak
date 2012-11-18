@@ -63,6 +63,7 @@ public class WordBreaker {
 				String segSuffix = SegmentString11(input.substring(i, len),
 						dict);
 				if (segSuffix != null) {
+					memoized.put(input, prefix + " " + segSuffix);
 					return prefix + " " + segSuffix;
 				}
 			}
