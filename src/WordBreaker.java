@@ -67,8 +67,8 @@ public class WordBreaker {
 					return prefix + " " + segSuffix;
 				}
 			}
-			memoized.put(input, null);
 		}
+		memoized.put(input, null);
 		return null;
 	}
 }
