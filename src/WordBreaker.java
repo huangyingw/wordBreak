@@ -51,22 +51,23 @@ public class WordBreaker {
 	Map<String, String> memoized = new HashMap<String, String>();
 
 	String SegmentString11(String input, Set<String> dict) {
-		if (dict.contains(input))
+		if (dict.contains(input)) {
+			memoized.put(input, input);
 			return input;
-		if (memoized.containsKey(input)) {
-			return memoized.get(input);
 		}
-		int len = input.length();
-		for (int i = 1; i < len; i++) {
-			String prefix = input.substring(0, i);
-			if (dict.contains(prefix)) {
-				String segSuffix = SegmentString11(input.substring(i, len),
-						dict);
-				if (segSuffix != null) {
-					memoized.put(input, prefix + " " + segSuffix);
-					return prefix + " " + segSuffix;
+		if (memoized.containsKey(input))
+			return memoized.get(input);
+		for (int i = 0; i < input.length(); i++) {
+			String preFix = input.substring(0, i);
+			if (dict.contains(preFix)) {
+				String newInput = input.substring(i, input.length());
+				String postFix = SegmentString11(newInput, dict);
+				if (postFix != null) {
+					memoized.put(input, preFix + " " + postFix);
+					return preFix + " " + postFix;
 				}
 			}
+
 		}
 		memoized.put(input, null);
 		return null;
