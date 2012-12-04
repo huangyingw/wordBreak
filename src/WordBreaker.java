@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class WordBreaker {
 	public static void main(String[] args) {
-		String test = "iloveyouhelloworld";
+		String test = "iloveyouloveyouhelloworld";
 		Set<String> dict = new HashSet<String>();
 		dict.add("i");
 		dict.add("love");
@@ -59,7 +59,7 @@ public class WordBreaker {
 			return memoized.get(input);
 		for (int i = 0; i < input.length(); i++) {
 			String preFix = input.substring(0, i);
-			if (dict.contains(preFix)) {
+			if (dict.contains(preFix) || memoized.containsKey(preFix)) {
 				String newInput = input.substring(i, input.length());
 				String postFix = SegmentString11(newInput, dict);
 				if (postFix != null) {
