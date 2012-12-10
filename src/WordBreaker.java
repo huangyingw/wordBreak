@@ -11,6 +11,9 @@ public class WordBreaker {
 		dict.add("love");
 		dict.add("you");
 		dict.add("hello");
+		dict.add("lo");
+		dict.add("veyo");
+		dict.add("u");
 		dict.add("world");
 		WordBreaker wb = new WordBreaker();
 		System.out.println(wb.SegmentString(test, dict));
